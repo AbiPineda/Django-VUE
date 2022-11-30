@@ -10,7 +10,7 @@
       <div class="col">
         <div class="card">
           <div class="card-body">
-            <form @onSubmit="onSubmit">
+            <form @submit="onSubmit">
               <div class="form-group row">
                 <label for="title" class="col-sm-2 col-form-label"
                   >Titulo</label
@@ -77,6 +77,20 @@ export default {
   methods: {
     onSubmit(even) {
       even.preventDefault();
+      /* Para actualizar/editar */
+      const path = `http://localhost:8000/api/v1.0/books/${this.bookId}/`;
+      axios
+        .put(path, this.form)
+        .then(response => {
+          this.form.title = response.data.title;
+          this.form.description = response.data.description;
+
+          alert('Libro actualizado exitosamente')
+        })
+        .catch(err => {
+          console.log(err);
+        });
+
     },
     getBook() {
       const path = `http://localhost:8000/api/v1.0/books/${this.bookId}`;
