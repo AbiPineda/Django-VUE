@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import axios from 'axios';
+import axios from "axios";
 
 export default {
   data() {
@@ -26,21 +26,23 @@ export default {
       books: []
     };
   },
-  methods:{
-    getBooks(){
-        const path = 'localhost:8000/api/v1.0/books/'
-        axios.get(path).then((response)=>{
-            this.books = response.data
+  methods: {
+    getBooks() {
+      const path = "http://localhost:8000/api/v1.0/books/";
+      axios
+        .get(path)
+        .then(response => {
+          this.books = response.data;
         })
-        .catch((err)=>{
-            /* si existe error */
-            console.log(err)
-        })
+        .catch(err => {
+          /* si existe error */
+          console.log(err);
+        });
     }
   },
-  created(){
-    this.getBooks()
-  }
+  created() {
+    this.getBooks();
+  },
 };
 </script>
 
