@@ -6,11 +6,11 @@
 
         <div class="col-md-12">
           <b-table striped hover :items="books" :fields="fields">
-            <template v-slot:cell(action)="data">
+            <template v-slot:cell(action)="data" >
               <b-button
                 size="sm"
                 variant="primary"
-                :to="{path: `/books/${data.item.id}/edit` }"
+                :to="{name:'EditBook', params: {bookId: data.item.id }}"
                 >Editar</b-button
               >
               <b-button size="sm" variant="danger">Eliminar</b-button>
